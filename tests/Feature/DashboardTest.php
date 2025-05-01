@@ -24,4 +24,13 @@ class DashboardTest extends TestCase
         $response = $this->get('/dashboard');
         $response->assertStatus(200);
     }
+
+    public function test_can_only_be_accessed_by_accepted_users(): void
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->get('/dashboard');
+        $response->assertRedirect('/settings/profile');
+    }
 }
