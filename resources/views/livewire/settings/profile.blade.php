@@ -113,6 +113,8 @@ new class extends Component {
             </div>
         </form>
 
-        <livewire:settings.delete-user-form />
+        @if(config('auth.delete_account', false))
+            <livewire:settings.delete-user-form />
+        @endif
     </x-settings.layout>
 </section>

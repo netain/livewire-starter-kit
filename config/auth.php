@@ -9,7 +9,19 @@ return [
     | This option allows you to enable or disable user registration.
     |
     */
+
     'register' => env('ENABLE_REGISTRATION', true),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Delete Account
+    |--------------------------------------------------------------------------
+    |
+    | This option allows you to enable or disable user account deletion.
+    |
+    */
+
+    'delete_account' => env('ENABLE_DELETE_ACCOUNT', true),
 
     /*
     |--------------------------------------------------------------------------
