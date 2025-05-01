@@ -17,3 +17,9 @@ it('can be a super', function () {
 
     expect($role->is_super)->toBeTrue();
 });
+
+it('has many users', function () {
+    $role = Role::factory()->users(3)->create();
+
+    expect($role->users)->tohaveCount(3);
+});

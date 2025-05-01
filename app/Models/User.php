@@ -19,6 +19,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'role_id',
         'first_name',
         'last_name',
         'email',
@@ -75,5 +76,13 @@ class User extends Authenticatable
     public function getInvitationAcceptedAttribute(): bool
     {
         return config('auth.accept_invite_only', false) ? $this->invitation_accepted_at !== null : true;
+    }
+
+    /**
+     * Get the user's role.
+     */
+    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Role::class);
     }
 }

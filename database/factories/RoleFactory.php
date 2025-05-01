@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -29,5 +30,12 @@ class RoleFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'is_super' => true,
         ]);
+    }
+
+    public function users(int $count = 1): self
+    {
+        return $this->afterCreating(function ($role) use ($count) {
+            User::factory($count)->create(['role_id' => $role->id]);
+        });
     }
 }
