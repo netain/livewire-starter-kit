@@ -8,12 +8,12 @@ test('to array', function (): void {
         'first_name',
         'last_name',
         'email',
-        'accepted_at'
+        'invitation_accepted_at'
     ]);
 });
 
-it('can be accepted', function(): void {
-    $user = User::factory()->accepted()->create();
+it('can have accepted invitation', function(): void {
+    $user = User::factory()->invitation_accepted()->create();
 
-    expect($user->accepted)->toBeTrue();
+    expect($user->invitation_accepted)->toBeTrue();
 });

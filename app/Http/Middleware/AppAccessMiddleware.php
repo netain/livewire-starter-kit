@@ -15,7 +15,7 @@ class AppAccessMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!$request->user()->accepted && config('auth.accept_invite_only')) {
+        if(!$request->user()->invitation_accepted) {
             return redirect()->route('settings.profile')
                 ->with('error', 'You need to accept the terms and conditions to access this page.');
         }

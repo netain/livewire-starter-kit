@@ -30,7 +30,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
-            'accepted_at' => null,
+            'invitation_accepted_at' => null,
         ];
     }
 
@@ -47,10 +47,10 @@ class UserFactory extends Factory
     /**
      * Indicate that the model has accepted the invitation.
      */
-    public function accepted(): static
+    public function invitation_accepted(): static
     {
         return $this->state(fn (array $attributes) => [
-            'accepted_at' => now(),
+            'invitation_accepted_at' => now(),
         ]);
     }
 }

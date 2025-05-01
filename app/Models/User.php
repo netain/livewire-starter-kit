@@ -45,7 +45,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'accepted_at' => 'datetime',
+            'invitation_accepted_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
@@ -72,8 +72,8 @@ class User extends Authenticatable
     /**
      * Returns true if the user has accepted the invitation.
      */
-    public function getAcceptedAttribute(): bool
+    public function getInvitationAcceptedAttribute(): bool
     {
-        return $this->accepted_at !== null;
+        return config('auth.accept_invite_only', false) ? $this->invitation_accepted_at !== null : true;
     }
 }
