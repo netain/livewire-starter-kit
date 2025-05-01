@@ -15,5 +15,5 @@ test('to array', function (): void {
 it('can be accepted', function(): void {
     $user = User::factory()->accepted()->create();
 
-    expect($user->accepted_at)->not()->toBeNull();
+    expect($user->accepted)->toBeTrue();
 });

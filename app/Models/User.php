@@ -68,4 +68,12 @@ class User extends Authenticatable
     {
         return "{$this->first_name} {$this->last_name}";
     }
+
+    /**
+     * Returns true if the user has accepted the invitation.
+     */
+    public function getAcceptedAttribute(): bool
+    {
+        return $this->accepted_at !== null;
+    }
 }
