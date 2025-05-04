@@ -19,7 +19,6 @@ class CreateUser
     {
         $data = Validator::make($attributes, $this->rules())->validate();
         $data['password'] = Hash::make(Str::password());
-
         return User::create($data);
     }
 
@@ -34,6 +33,7 @@ class CreateUser
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'role_id' => 'required|exists:roles,id',
         ];
     }
 }
